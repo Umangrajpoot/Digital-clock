@@ -1,0 +1,85 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+
+<head> 
+	<meta charset="UTF-8" /> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
+
+	<title>Digital Clock</title> 
+
+	<style> 
+		#clock { 
+			font-size: 100px; 
+			width: 50%;
+			margin: 20px; 
+			text-align: center; 
+			border: 5px solid white; 
+            border-radius: 30px; 
+            background-color: transparent;
+            margin-left: 330px;
+            margin-top: 250px;
+            color: white;
+           
+           
+        } 
+        body{
+            background-image: url("wall31.jpg");
+            background-repeat: no-repeat;
+            background-size:100%;
+            
+        }
+	</style> 
+</head> 
+
+<body> 
+    <div id="clock">Hi</div>
+    <script>
+        setInterval(showTime,1000);
+        function showTime()
+        {
+            //If hour > 12 then should start from 1
+            //After 12 Noon -> PM
+            let date = new Date(); //object 
+            let hour = date.getHours();
+            let min = date.getMinutes();
+            let sec = date.getSeconds();
+            
+            let am_pm = "AM";
+            
+            if(hour>12)
+            {
+                hour = hour - 12;
+                am_pm = "PM";
+            }
+            else if(hour==12)
+            {
+                am_pm = "PM";
+            }
+            if(hour == 0)
+            {
+                hour = 12;
+                am_pm = "AM";
+            }
+            
+            if(hour<10)
+            {
+                hour = "0" + hour;
+            }
+            if(min<10)
+            {
+                min = "0" + min;
+            }
+            if(sec<10)
+            {
+                sec = "0" +sec;
+            }
+
+            document.getElementById("clock").innerHTML = hour+":" + min + ":"+ sec + " " + am_pm;
+            //document.getElementById("clock").innerHTML = year;
+        }
+        showTime();
+    </script>
+
+
+</body>
+</html>
